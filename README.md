@@ -24,6 +24,14 @@ This project uses [Apache Maven](https://maven.apache.org/) to build.  To build 
 
         mvn clean install
 
+## Maven Dependency
+
+        <dependency>
+            <groupId>com.likethecolor</groupId>
+            <artifactId>alchemy</artifactId>
+            <version>1.0</version>
+        </dependency>
+
 ## Dependencies
 
 You can look at the pom.xml to find the dependencies.  In short:
