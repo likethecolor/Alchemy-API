@@ -39,7 +39,7 @@ public class TitleCall extends AbstractCall<TitleAlchemyEntity> {
   }
 
   @Override
-  public Response parse(String jsonString) {
+  public Response<TitleAlchemyEntity> parse(String jsonString) {
     return new TitleParser().parse(jsonString);
   }
 }
