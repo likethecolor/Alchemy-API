@@ -31,7 +31,7 @@ public class ConceptParser extends AbstractParser<ConceptAlchemyEntity> {
   }
 
   @Override
-  protected void populateResponse(final Response response) {
+  protected void populateResponse(final Response<ConceptAlchemyEntity> response) {
     final JSONObject jsonObject = getJSONObject();
     final JSONArray concepts = getJSONArray(JSONConstants.RANKED_CONCEPTS, jsonObject);
 

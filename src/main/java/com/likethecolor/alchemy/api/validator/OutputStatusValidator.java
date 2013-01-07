@@ -30,15 +30,15 @@ public class OutputStatusValidator {
     final Response response = new HeaderParser().parse(jsonString);
     final Response.STATUS status = response.getStatus();
     final String statusInfo = response.getStatusInfo();
-    validate(status, statusInfo);
+    validate(status, statusInfo, jsonString);
   }
 
-  private static void validate(final Response.STATUS status, final String statusInfo) throws IOException {
+  private static void validate(final Response.STATUS status, final String statusInfo, final String originalJsonString) throws IOException {
     if(null == status || status != Response.STATUS.OK) {
       if(!StringUtils.isBlank(statusInfo)) {
-        throw new IOException("Error making API call: " + statusInfo + '.');
+        throw new IOException("Error making API call: " + statusInfo + " - original json string: " + originalJsonString);
       }
-      throw new IOException("Error making API call: " + status + '.');
+      throw new IOException("Error making API call: " + status + " - original json string: " + originalJsonString);
     }
   }
 }

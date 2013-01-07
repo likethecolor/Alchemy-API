@@ -23,7 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 
 public class CategoryParser extends AbstractParser<CategoryAlchemyEntity> {
-  protected void populateResponse(final Response response) {
+  protected void populateResponse(final Response<CategoryAlchemyEntity> response) {
     final JSONObject jsonObject = getJSONObject();
     final String category = getString(JSONConstants.CATEGORY_KEY, jsonObject);
     final Double score = getDouble(JSONConstants.CATEGORY_SCORE_KEY, jsonObject);

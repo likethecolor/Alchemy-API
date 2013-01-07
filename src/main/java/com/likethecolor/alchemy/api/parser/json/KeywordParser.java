@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 public class KeywordParser extends AbstractParser<KeywordAlchemyEntity> {
   @Override
-  protected void populateResponse(final Response response) {
+  protected void populateResponse(final Response<KeywordAlchemyEntity> response) {
     final JSONObject jsonObject = getJSONObject();
     final JSONArray keywords = getJSONArray(JSONConstants.RANKED_KEYWORDS, jsonObject);
     if(keywords.length() > 0) {
