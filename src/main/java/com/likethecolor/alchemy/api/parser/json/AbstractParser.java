@@ -46,7 +46,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
     Response<T> response = new Response<T>();
     response.setLanguage(getString(JSONConstants.RESULTS_LANGUAGE, getJSONObject()));
     response.setStatus(getString(JSONConstants.RESULTS_STATUS, getJSONObject()));
-    response.setStatus(getString(JSONConstants.RESULTS_STATUS_INFO, getJSONObject()));
+    response.setStatusInfo(getString(JSONConstants.RESULTS_STATUS_INFO, getJSONObject()));
     response.setText(getString(JSONConstants.RESULTS_TEXT, getJSONObject()));
     response.setURL(getString(JSONConstants.RESULTS_URL, getJSONObject()));
     response.setUsage(getString(JSONConstants.RESULTS_USAGE, getJSONObject()));
