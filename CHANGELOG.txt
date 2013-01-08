@@ -1,0 +1,3 @@
+* Jan 07 2013 Dan Brown <dan@likethecolor.com> - 1.0.1
+- OutputStatusValidator logs the json string returned from alchemyapi service
+- AbstractParser calls replaced 2 calls to setStatus with 1 call to setStatus and 1 call to setStatusInfo
