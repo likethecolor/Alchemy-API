@@ -25,21 +25,21 @@ import com.likethecolor.alchemy.api.params.Params;
 import com.likethecolor.alchemy.api.parser.json.TitleParser;
 
 public class TitleCall extends AbstractCall<TitleAlchemyEntity> {
-  public TitleCall(final CallType callType) {
-    this(callType, new Params());
-  }
+	public TitleCall(final CallType callType) {
+		this(callType, new Params());
+	}
 
-  public TitleCall(final CallType callType, final Params params) {
-    super(callType, params);
-  }
+	public TitleCall(final CallType callType, final Params params) {
+		super(callType, params);
+	}
 
-  @Override
-  public String getName() {
-    return Constants.CALL_NAME_TITLE;
-  }
+	@Override
+	public String getName() {
+		return Constants.CALL_NAME_TITLE;
+	}
 
-  @Override
-  public Response parse(String jsonString) {
-    return new TitleParser().parse(jsonString);
-  }
+	@Override
+	public Response<TitleAlchemyEntity> parse(String jsonString) {
+		return new TitleParser().parse(jsonString);
+	}
 }

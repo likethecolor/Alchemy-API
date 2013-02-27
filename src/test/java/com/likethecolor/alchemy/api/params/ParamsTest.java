@@ -27,238 +27,258 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class ParamsTest {
-  @Test
-  public void testHtml() {
-    final String expectedHtml = "<html><body>text</body></html>";
+	@Test
+	public void testHtml() {
+		final String expectedHtml = "<html><body>text</body></html>";
 
-    final Params params = new Params();
+		final Params params = new Params();
 
-    params.setHtml(expectedHtml);
+		params.setHtml(expectedHtml);
 
-    String actualHtml = params.getHtml();
+		String actualHtml = params.getHtml();
 
-    assertEquals(expectedHtml, actualHtml);
+		assertEquals(expectedHtml, actualHtml);
 
 
-    // null - should change value
-    params.setHtml(null);
+		// null - should change value
+		params.setHtml(null);
 
-    actualHtml = params.getHtml();
+		actualHtml = params.getHtml();
 
-    assertNull(actualHtml);
+		assertNull(actualHtml);
 
-    // empty string - should change value
-    params.setHtml(expectedHtml);
-    params.setHtml("");
+		// empty string - should change value
+		params.setHtml(expectedHtml);
+		params.setHtml("");
 
-    actualHtml = params.getHtml();
+		actualHtml = params.getHtml();
 
-    assertEquals("", actualHtml);
+		assertEquals("", actualHtml);
 
-    // empty white space string - should change value and be trimmed
-    params.setHtml(expectedHtml);
-    params.setHtml("\t  \t\r\n");
+		// empty white space string - should change value and be trimmed
+		params.setHtml(expectedHtml);
+		params.setHtml("\t  \t\r\n");
 
-    actualHtml = params.getHtml();
+		actualHtml = params.getHtml();
 
-    assertEquals("", actualHtml);
+		assertEquals("", actualHtml);
 
-    // should trim
-    params.setHtml("\n\r  " + expectedHtml + "   \t  ");
+		// should trim
+		params.setHtml("\n\r  " + expectedHtml + "   \t  ");
 
-    actualHtml = params.getHtml();
+		actualHtml = params.getHtml();
 
-    assertEquals(expectedHtml, actualHtml);
-  }
+		assertEquals(expectedHtml, actualHtml);
+	}
 
-  @Test
-  public void testOutputMode() {
-    assertEquals(Constants.DEFAULT_OUTPUT_FORMAT, new Params().getOutputMode());
-  }
+	@Test
+	public void testOutputMode() {
+		assertEquals(Constants.DEFAULT_OUTPUT_FORMAT, new Params().getOutputMode());
+	}
 
-  @Test
-  public void testText() {
-    final String expectedText = "This is some text";
+	@Test
+	public void testText() {
+		final String expectedText = "This is some text";
 
-    final Params params = new Params();
+		final Params params = new Params();
 
-    params.setText(expectedText);
+		params.setText(expectedText);
 
-    String actualText = params.getText();
+		String actualText = params.getText();
 
-    assertEquals(expectedText, actualText);
+		assertEquals(expectedText, actualText);
 
 
-    // null - should change value
-    params.setText(null);
+		// null - should change value
+		params.setText(null);
 
-    actualText = params.getText();
+		actualText = params.getText();
 
-    assertNull(actualText);
+		assertNull(actualText);
 
-    // empty string - should change value
-    params.setText(expectedText);
-    params.setText("");
+		// empty string - should change value
+		params.setText(expectedText);
+		params.setText("");
 
-    actualText = params.getText();
+		actualText = params.getText();
 
-    assertEquals("", actualText);
+		assertEquals("", actualText);
 
-    // empty white space string - should change value and be trimmed
-    params.setText(expectedText);
-    params.setText("\t  \t\r\n");
+		// empty white space string - should change value and be trimmed
+		params.setText(expectedText);
+		params.setText("\t  \t\r\n");
 
-    actualText = params.getText();
+		actualText = params.getText();
 
-    assertEquals("", actualText);
+		assertEquals("", actualText);
 
-    // should trim
-    params.setText("\n\r  " + expectedText + "   \t  ");
+		// should trim
+		params.setText("\n\r  " + expectedText + "   \t  ");
 
-    actualText = params.getText();
+		actualText = params.getText();
 
-    assertEquals(expectedText, actualText);
-  }
+		assertEquals(expectedText, actualText);
+	}
 
-  @Test
-  public void testURL() {
-    final String expectedURL = "http://www.site.com/data";
+	@Test
+	public void testTimeout() {
+		final int expectedTimeout = 6000;
 
-    final Params params = new Params();
+		final Params params = new Params();
 
-    params.setURL(expectedURL);
+		params.setTimeout(expectedTimeout);
 
-    String actualURL = params.getURL();
+		int actualTimeout = params.getTimeout();
 
-    assertEquals(expectedURL, actualURL);
+		assertEquals(expectedTimeout, actualTimeout);
 
 
-    // null - should change value
-    params.setURL(null);
+		// negative should set to default - should change value
+		params.setTimeout(-1);
 
-    actualURL = params.getURL();
+		actualTimeout = params.getTimeout();
 
-    assertNull(actualURL);
+		assertEquals(Constants.DEFAULT_CLIENT_TIMEOUT, actualTimeout);
+	}
 
-    // empty string - should change value
-    params.setURL(expectedURL);
-    params.setURL("");
+	@Test
+	public void testURL() {
+		final String expectedURL = "http://www.site.com/data";
 
-    actualURL = params.getURL();
+		final Params params = new Params();
 
-    assertEquals("", actualURL);
+		params.setURL(expectedURL);
 
-    // empty white space string - should change value and be trimmed
-    params.setURL(expectedURL);
-    params.setURL("\t  \t\r\n");
+		String actualURL = params.getURL();
 
-    actualURL = params.getURL();
+		assertEquals(expectedURL, actualURL);
 
-    assertEquals("", actualURL);
 
-    // should trim
-    params.setURL("\n\r  " + expectedURL + "   \t  ");
+		// null - should change value
+		params.setURL(null);
 
-    actualURL = params.getURL();
+		actualURL = params.getURL();
 
-    assertEquals(expectedURL, actualURL);
-  }
+		assertNull(actualURL);
 
-  @Test
-  public void testToString() {
-    final String html = "<html><body>text</body></html>";
-    final String text = "This is some text";
-    final String url = "http://www.site.com/data";
+		// empty string - should change value
+		params.setURL(expectedURL);
+		params.setURL("");
 
-    Params params = new Params();
+		actualURL = params.getURL();
 
-    // HTML
-    params.setHtml(html);
+		assertEquals("", actualURL);
 
-    String expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
-                            + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		// empty white space string - should change value and be trimmed
+		params.setURL(expectedURL);
+		params.setURL("\t  \t\r\n");
 
-    assertEquals(expectedString, params.toString());
+		actualURL = params.getURL();
 
-    // Text
-    params = new Params();
+		assertEquals("", actualURL);
 
-    params.setText(text);
+		// should trim
+		params.setURL("\n\r  " + expectedURL + "   \t  ");
 
-    expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		actualURL = params.getURL();
 
-    assertEquals(expectedString, params.toString());
+		assertEquals(expectedURL, actualURL);
+	}
 
-    // url
-    params = new Params();
+	@Test
+	public void testToString() {
+		final String html = "<html><body>text</body></html>";
+		final String text = "This is some text";
+		final String url = "http://www.site.com/data";
 
-    params.setURL(url);
+		Params params = new Params();
 
-    expectedString = "&" + Constants.PARAM_URL + "=" + encode(url)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		// HTML
+		params.setHtml(html);
 
-    assertEquals(expectedString, params.toString());
+		String expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
-    // html + text
-    params = new Params();
+		assertEquals(expectedString, params.toString());
 
-    params.setHtml(html);
-    params.setText(text);
+		// Text
+		params = new Params();
 
-    expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
-                     + "&" + Constants.PARAM_TEXT + "=" + encode(text)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		params.setText(text);
 
-    assertEquals(expectedString, params.toString());
+		expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
-    // text + url
-    params = new Params();
+		assertEquals(expectedString, params.toString());
 
-    params.setText(text);
-    params.setURL(url);
+		// url
+		params = new Params();
 
-    expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
-                     + "&" + Constants.PARAM_URL + "=" + encode(url)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		params.setURL(url);
 
-    assertEquals(expectedString, params.toString());
+		expectedString = "&" + Constants.PARAM_URL + "=" + encode(url)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
-    // html + url
-    params = new Params();
+		assertEquals(expectedString, params.toString());
 
-    params.setHtml(html);
-    params.setURL(url);
+		// html + text
+		params = new Params();
 
-    expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
-                     + "&" + Constants.PARAM_URL + "=" + encode(url)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		params.setHtml(html);
+		params.setText(text);
 
-    assertEquals(expectedString, params.toString());
+		expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
+			+ "&" + Constants.PARAM_TEXT + "=" + encode(text)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
-    // html + text + url
-    params = new Params();
+		assertEquals(expectedString, params.toString());
 
-    params.setHtml(html);
-    params.setText(text);
-    params.setURL(url);
+		// text + url
+		params = new Params();
 
-    expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
-                     + "&" + Constants.PARAM_TEXT + "=" + encode(text)
-                     + "&" + Constants.PARAM_URL + "=" + encode(url)
-                     + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+		params.setText(text);
+		params.setURL(url);
 
-    assertEquals(expectedString, params.toString());
-  }
+		expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
+			+ "&" + Constants.PARAM_URL + "=" + encode(url)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
-  private String encode(final String value) {
-    String encodedValue = "";
-    try {
-      encodedValue = URLEncoder.encode(value, Constants.DEFAULT_ENCODING);
-    }
-    catch(UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-    return encodedValue;
-  }
+		assertEquals(expectedString, params.toString());
+
+		// html + url
+		params = new Params();
+
+		params.setHtml(html);
+		params.setURL(url);
+
+		expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
+			+ "&" + Constants.PARAM_URL + "=" + encode(url)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+
+		assertEquals(expectedString, params.toString());
+
+		// html + text + url
+		params = new Params();
+
+		params.setHtml(html);
+		params.setText(text);
+		params.setURL(url);
+
+		expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
+			+ "&" + Constants.PARAM_TEXT + "=" + encode(text)
+			+ "&" + Constants.PARAM_URL + "=" + encode(url)
+			+ "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
+
+		assertEquals(expectedString, params.toString());
+	}
+
+	private String encode(final String value) {
+		String encodedValue = "";
+		try {
+			encodedValue = URLEncoder.encode(value, Constants.DEFAULT_ENCODING);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return encodedValue;
+	}
 }

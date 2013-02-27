@@ -17,13 +17,14 @@
  */
 package com.likethecolor.alchemy.api.parser.json;
 
+import com.likethecolor.alchemy.api.entity.HeaderAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.Response;
 
 /**
  * Parses just the header.
  */
-public class HeaderParser extends AbstractParser {
-  @Override
-  protected void populateResponse(final Response response) {
-  }
+public class HeaderParser extends AbstractParser<HeaderAlchemyEntity> {
+	@Override
+	protected void populateResponse(final Response<HeaderAlchemyEntity> response) {
+	}
 }

@@ -23,26 +23,25 @@ import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 
 public class CategoryParser extends AbstractParser<CategoryAlchemyEntity> {
-  protected void populateResponse(final Response response) {
-    final JSONObject jsonObject = getJSONObject();
-    final String category = getString(JSONConstants.CATEGORY_KEY, jsonObject);
-    final Double score = getDouble(JSONConstants.CATEGORY_SCORE_KEY, jsonObject);
+	protected void populateResponse(final Response<CategoryAlchemyEntity> response) {
+		final JSONObject jsonObject = getJSONObject();
+		final String category = getString(JSONConstants.CATEGORY_KEY, jsonObject);
+		final Double score = getDouble(JSONConstants.CATEGORY_SCORE_KEY, jsonObject);
 
-    if(isValidCategory(category, score)) {
-      response.addEntity(new CategoryAlchemyEntity(category, score));
-    }
-  }
+		if (isValidCategory(category, score)) {
+			response.addEntity(new CategoryAlchemyEntity(category, score));
+		}
+	}
 
-  /**
-   * Return true if at least one of the values is not null/empty.
-   *
-   * @param category the category text
-   * @param score the sentiment score
-   *
-   * @return true if at least one of the values is not null/empty
-   */
-  private boolean isValidCategory(final String category, final Double score) {
-    return !StringUtils.isBlank(category)
-           || score != null;
-  }
+	/**
+	 * Return true if at least one of the values is not null/empty.
+	 *
+	 * @param category the category text
+	 * @param score    the sentiment score
+	 * @return true if at least one of the values is not null/empty
+	 */
+	private boolean isValidCategory(final String category, final Double score) {
+		return !StringUtils.isBlank(category)
+			|| score != null;
+	}
 }

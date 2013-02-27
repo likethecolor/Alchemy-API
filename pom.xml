@@ -13,10 +13,11 @@
   <packaging>jar</packaging>
   <name>Java Client for AlchemyAPI</name>
   <url>https://github.com/likethecolor/Alchemy-API</url>
-  <version>1.0</version>
+  <version>1.0.2-SNAPSHOT</version>
 
   <description>
-  Java client for the AlchemyAPI, a cloud-based text mining platform (http://www.alchemyapi.com/).
+    Java client for the AlchemyAPI, a cloud-based text mining platform
+    (http://www.alchemyapi.com/).
   </description>
 
   <developers>
@@ -42,7 +43,8 @@
 
   <scm>
     <connection>scm:git:git@github.com:likethecolor/Alchemy-API.git</connection>
-    <developerConnection>scm:git:git@github.com:likethecolor/Alchemy-API.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:likethecolor/Alchemy-API.git
+    </developerConnection>
     <url>git@github.com:likethecolor/Alchemy-API.git</url>
   </scm>
 
