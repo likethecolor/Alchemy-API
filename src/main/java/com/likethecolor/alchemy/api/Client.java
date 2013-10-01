@@ -8,7 +8,6 @@ package com.likethecolor.alchemy.api;
 import com.likethecolor.alchemy.api.call.AbstractCall;
 import com.likethecolor.alchemy.api.entity.Response;
 import com.likethecolor.alchemy.api.params.Params;
-import com.likethecolor.alchemy.api.validator.ApiKeyFileNameValidator;
 import com.likethecolor.alchemy.api.validator.ApiKeyValidator;
 import com.likethecolor.alchemy.api.validator.OutputStatusValidator;
 import org.slf4j.Logger;
@@ -26,7 +25,6 @@ import java.net.URL;
 public class Client {
   private static final Logger LOGGER = LoggerFactory.getLogger(Client.class);
   private static final String API_KEY = "apikey";
-  private static final String API_KEY_FILE = "/alchemy-key.txt";
   private static final String HEADER_CONTENT_LENGTH = "Content-Length";
   private static final String DEFAULT_URL = "http://access.alchemyapi.com/calls/";
 
@@ -34,29 +32,13 @@ public class Client {
   private String requestUri = DEFAULT_URL;
 
   public Client() throws IOException {
-    this(API_KEY_FILE);
   }
 
-  public Client(final String apiFileNameResource) throws IOException {
-    loadAPIKey(apiFileNameResource);
+  public Client(final String apiKey) throws IOException {
+    setAPIKey(apiKey);
   }
 
-  private void loadAPIKey(final String apiFileNameResource) throws IOException {
-    ApiKeyFileNameValidator.validate(apiFileNameResource);
-
-    BufferedReader bufferedReader = null;
-    try {
-      bufferedReader = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(apiFileNameResource)));
-      setAPIKey(bufferedReader.readLine());
-    }
-    finally {
-      if(bufferedReader != null) {
-        bufferedReader.close();
-      }
-    }
-  }
-
-  public void setAPIKey(final String apiKey) {
+  private void setAPIKey(final String apiKey) {
     ApiKeyValidator.validate(apiKey);
 
     LOGGER.debug("api key: " + apiKey);
