@@ -18,6 +18,18 @@ nothing but capital letters (e.g, GetInstanceFromFile, GET, POST).  Others are p
 - It gives the client the ability to specify the return format from the call to the service (either RDF or XML).
 If you return objects there is no need for the client to specify or even care what the output format is.
 
+### Note
+
+A recent change (maven 1.1.0) has removed from the `Client` the loading of the API key from an external resource.
+
+* `new Client()` does nothing
+
+* `new Client(String)` expects the argument to be the API key
+
+Removed:
+
+* `new Client(String)` where the String is the classpath to a resource containing the API key
+
 ## Build
 
 This project uses [Apache Maven](https://maven.apache.org/) to build.  To build and install into your local Maven repository:
@@ -48,7 +60,13 @@ Note that for testing the slf4j-log4j12 artifact is a dependency (scope: test). 
 
 ### Using Default Parameters
 
-        final Client client = new Client("/key-provided-by-alchemy.txt");
+        final String apiKey = "0a1b2c3d4e5f6g7h8i9j0a1b2c3d4e5f6g7h8i9j";
+        final Client client = new Client(apiKey);
+
+        OR
+
+        final Client client = new Client();
+        client.setAPIKey(apiKey);
 
         final AbstractCall call = new AuthorCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"));
         System.out.println(client.call(call));
@@ -116,6 +134,9 @@ More examples:
         System.out.println(response.toString(ToStringStyle.MULTI_LINE_STYLE));
 
 ### Complete Example
+
+        final String apiKey = "0a1b2c3d4e5f6g7h8i9j0a1b2c3d4e5f6g7h8i9j";
+        final Client client = new Client(apiKey);
 
         // Big Blue's Bet on Big Data
         final AbstractCall call = new SentimentCall(new CallTypeUrl("http://www.answers.com/article/3b7a1506797deda268075f0886eac4d8"));
