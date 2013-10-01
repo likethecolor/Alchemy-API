@@ -38,7 +38,7 @@ public class Client {
     setAPIKey(apiKey);
   }
 
-  private void setAPIKey(final String apiKey) {
+  public void setAPIKey(final String apiKey) {
     ApiKeyValidator.validate(apiKey);
 
     LOGGER.debug("api key: " + apiKey);
