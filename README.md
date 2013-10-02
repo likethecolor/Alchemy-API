@@ -68,58 +68,59 @@ Note that for testing the slf4j-log4j12 artifact is a dependency (scope: test). 
         final Client client = new Client();
         client.setAPIKey(apiKey);
 
-        final AbstractCall call = new AuthorCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"));
-        System.out.println(client.call(call));
-
-which is the same thing as this more verbose version:
-
-        final AbstractCall call = new AuthorCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"));
-        final Response response = client.call(call);
+        final AbstractCall<AuthorAlchemyEntity> authorCall = new AuthorCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"));
+        final Response response = client.call(authorCall);
         System.out.println(response);
+        System.out.println();
+
+which is slightly more verbose version of this:
+
+        final AbstractCall<AuthorAlchemyEntity> authorCall = new AuthorCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"));
+        System.out.println(client.call(authorCall));
+        System.out.println();
 
 More examples:
 
-        final AbstractCall call = new CategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<CategoryAlchemyEntity> categoryCall = new CategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(categoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new LanguageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<LanguageAlchemyEntity> languageCall = new LanguageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(languageCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new MicroformatDataCall(new CallTypeUrl("http://microformats.org/wiki/hcard"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<MicroformatAlchemyEntity> microformatCall = new MicroformatDataCall(new CallTypeUrl("http://microformats.org/wiki/hcard"));
+        System.out.println(client.call(microformatCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new RankedCategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<CategoryAlchemyEntity> rankedCategoryCall = new RankedCategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(rankedCategoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new RankedConceptsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<ConceptAlchemyEntity> rankedConceptsCall = new RankedConceptsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(rankedConceptsCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new RankedKeywordsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<KeywordAlchemyEntity> rankedKeywordsCall = new RankedKeywordsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(rankedKeywordsCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new RawTextCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<HeaderAlchemyEntity> rawTextCall = new RawTextCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(rawTextCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new RelationsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<RelationAlchemyEntity> relationsCall = new RelationsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(relationsCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new SentimentCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call));
+        final AbstractCall<SentimentAlchemyEntity> sentimentCall = new SentimentCall(new CallTypeUrl("http://www.answers.com/article/3b7a1506797deda268075f0886eac4d8"));
+        System.out.println(client.call(rawTextCall).toString(ToStringStyle.MULTI_LINE_STYLE);
 
-        final AbstractCall call = new TextCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<HeaderAlchemyEntity> textSentimentCall = new TextCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(textSentimentCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall call = new TitleCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(call).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<TitleAlchemyEntity> titleCall = new TitleCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(titleCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
 ### Setting Optional Values
 
         final TargetedSentimentParams targetedSentimentParams = new TargetedSentimentParams();
         targetedSentimentParams.setTarget("Schrenker");
 
-        final AbstractCall call = new TargetedSentimentCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"), targetedSentimentParams);
-        System.out.println(client.call(call));
-
+        final AbstractCall<SentimentAlchemyEntity> targetedSentimentCall = new TargetedSentimentCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"), targetedSentimentParams);
+        System.out.println(client.call(targetedSentimentCall));
 
         final NamedEntityParams namedEntityParams = new NamedEntityParams();
         namedEntityParams.setIsCoreference(true);
@@ -129,9 +130,9 @@ More examples:
         namedEntityParams.setIsSentiment(true);
         namedEntityParams.setIsShowSourceText(true);
 
-        final AbstractCall call = new RankedNamedEntitiesCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"), namedEntityParams);
-        response = client.call(call);
-        System.out.println(response.toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<NamedEntityAlchemyEntity> rankedNamedEntitiesCall = new RankedNamedEntitiesCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"), namedEntityParams);
+        final Response<NamedEntityAlchemyEntity> rankedNamedEntitiesResponse = client.call(rankedNamedEntitiesCall);
+        System.out.println(rankedNamedEntitiesResponse.toString(ToStringStyle.MULTI_LINE_STYLE));
 
 ### Complete Example
 
@@ -139,24 +140,29 @@ More examples:
         final Client client = new Client(apiKey);
 
         // Big Blue's Bet on Big Data
-        final AbstractCall call = new SentimentCall(new CallTypeUrl("http://www.answers.com/article/3b7a1506797deda268075f0886eac4d8"));
-        final Response response = client.call(call);
+        final AbstractCall<SentimentAlchemyEntity> sentimentCall = new SentimentCall(new CallTypeUrl("http://www.answers.com/article/3b7a1506797deda268075f0886eac4d8"));
+        final Response<SentimentAlchemyEntity> sentimentResponse = client.call(sentimentCall);
 
-        System.out.println("Language: " + response.getLanguage());
-        System.out.println("Status: " + response.getStatus());
-        System.out.println("Status Info: " + response.getStatusInfo());
-        System.out.println("Text: " + response.getText());
-        System.out.println("Usage: " + response.getUsage());
-        System.out.println("URL: " + response.getURL());
+        System.out.println("Language: " + sentimentResponse.getLanguage());
+        System.out.println("Status: " + sentimentResponse.getStatus());
+        System.out.println("Status Info: " + sentimentResponse.getStatusInfo());
+        System.out.println("Text: " + sentimentResponse.getText());
+        System.out.println("Usage: " + sentimentResponse.getUsage());
+        System.out.println("URL: " + sentimentResponse.getURL());
 
         SentimentAlchemyEntity entity;
-        final Iterator<SentimentAlchemyEntity> iter = response.iterator();
+        final Iterator<SentimentAlchemyEntity> iter = sentimentResponse.iterator();
         while(iter.hasNext()) {
           entity = iter.next();
           System.out.println("isMixed: " + (entity.isMixed() ? "true" : "false"));
           System.out.println("Score: " + entity.getScore());
           System.out.println("Type: " + entity.getType());
         }
+
+## Thanks
+
+Thanks to [Amir Raminfar](findamir@gmail.com) [amir20](https://github.com/amir20)
+for providing a second set of eyes and helping me make this project better.
 
 ## Authors
 
