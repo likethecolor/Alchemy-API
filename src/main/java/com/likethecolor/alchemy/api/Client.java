@@ -6,6 +6,7 @@
 package com.likethecolor.alchemy.api;
 
 import com.likethecolor.alchemy.api.call.AbstractCall;
+import com.likethecolor.alchemy.api.entity.AbstractAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.Response;
 import com.likethecolor.alchemy.api.params.Params;
 import com.likethecolor.alchemy.api.validator.ApiKeyValidator;
@@ -31,10 +32,10 @@ public class Client {
   private String apiKey;
   private String requestUri = DEFAULT_URL;
 
-  public Client() throws IOException {
+  public Client() {
   }
 
-  public Client(final String apiKey) throws IOException {
+  public Client(final String apiKey) {
     setAPIKey(apiKey);
   }
 
@@ -45,7 +46,7 @@ public class Client {
     this.apiKey = apiKey.trim();
   }
 
-  public Response call(final AbstractCall call) throws IOException {
+  public <T extends AbstractAlchemyEntity> Response<T> call(final AbstractCall<T> call) throws IOException {
     final Params params = call.getParams();
     call.getCallType().setValuesOnParams(params);
     final String callName = call.getCallType().getPrefix() + call.getName();
