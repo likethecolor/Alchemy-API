@@ -47,7 +47,7 @@ public abstract class AbstractCall<T extends AbstractAlchemyEntity> {
     return callType;
   }
 
-  public AbstractCall setParams(final Params params) {
+  public AbstractCall<T> setParams(final Params params) {
     this.params = params;
     return this;
   }
