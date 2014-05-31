@@ -1,5 +1,5 @@
 /**
- * File: CategoryParams.java
+ * File: TaxonomyParams.java
  * Original Author: Dan Brown <dan@likethecolor.com>
  * Copyright 2012 Dan Brown <dan@likethecolor.com>
  *
@@ -20,7 +20,7 @@ package com.likethecolor.alchemy.api.params;
 import com.likethecolor.alchemy.api.Constants;
 import org.apache.commons.lang.StringUtils;
 
-public class CategoryParams extends Params {
+public class TaxonomyParams extends Params {
   private String baseUrl;
   private String constraintQuery;
   private String sourceText;

@@ -32,10 +32,7 @@ public interface Constants {
   static final String CALL_NAME_RANKED_CONCEPTS = "GetRankedConcepts";
   static final String CALL_NAME_MICROFORMAT_DATA = "GetMicroformatData";
   static final String CALL_NAME_LANGUAGE = "GetLanguage";
-  static final String CALL_NAME_FEED_LINKS = "GetFeedLinks";
-  static final String CALL_NAME_CONSTRAINT_QUERY = "GetConstraintQuery";
-  static final String CALL_NAME_CATEGORY = "GetCategory";
-  static final String CALL_NAME_RANKED_CATEGORY = "GetRankedCategories";
+  static final String CALL_NAME_RANKED_TAXONOMY = "GetRankedTaxonomy";
   static final String CALL_NAME_TITLE = "GetTitle";
   static final String CALL_NAME_TEXT = "GetText";
   static final String CALL_NAME_RAW_TEXT = "GetRawText";

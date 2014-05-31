@@ -67,9 +67,6 @@ public class AuthorParserTest {
     assertEquals(0, response.size());
   }
 
-  /**
-   * Has both category and score.
-   */
   private String getJsonString() {
     return "{" +
            "\"" + JSONConstants.RESULTS_STATUS + "\":\"" + STATUS_STRING + "\"," +

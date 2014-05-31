@@ -1,5 +1,5 @@
 /**
- * File: CategoryParamsTest.java
+ * File: TaxonomyParamsTest.java
  *
  * Copyright 2012 Dan Brown <dan@likethecolor.com>
  *
@@ -25,12 +25,12 @@ import java.net.URLEncoder;
 
 import static org.junit.Assert.*;
 
-public class CategoryParamsTest {
+public class TaxonomyParamsTest {
   @Test
   public void testBaeUrl() {
     final String baseUrl = "http://url.com/";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
 
     params.setBaseUrl(baseUrl);
 
@@ -60,7 +60,7 @@ public class CategoryParamsTest {
   public void testConstraintQuery() {
     final String constraintQuery = "a-constraint-query";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
 
     params.setConstraintQuery(constraintQuery);
 
@@ -90,7 +90,7 @@ public class CategoryParamsTest {
   public void testSourceText() {
     String sourceText = Constants.SOURCE_TEXT_CLEANED_OR_RAW;
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
 
     params.setSourceText(sourceText);
 
@@ -154,7 +154,7 @@ public class CategoryParamsTest {
   public void testXPath() {
     final String xPath = "//top/@attribute";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
 
     params.setXPath(xPath);
 
@@ -187,7 +187,7 @@ public class CategoryParamsTest {
     final String sourceText = Constants.SOURCE_TEXT_XPATH;
     final String xPath = "//top/@attribute";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
     params.setBaseUrl(baseUrl);
     params.setConstraintQuery(constraintQuery);
     params.setSourceText(sourceText);
@@ -213,7 +213,7 @@ public class CategoryParamsTest {
     final String sourceText = Constants.SOURCE_TEXT_XPATH;
     final String xPath = "//top/@attribute";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
     params.setBaseUrl(baseUrl);
     params.setConstraintQuery(constraintQuery);
     params.setSourceText(sourceText);
@@ -238,7 +238,7 @@ public class CategoryParamsTest {
     final String sourceText = Constants.SOURCE_TEXT_XPATH;
     final String xPath = "//top/@attribute";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
     params.setBaseUrl(baseUrl);
     params.setConstraintQuery(constraintQuery);
     params.setSourceText(sourceText);
@@ -263,7 +263,7 @@ public class CategoryParamsTest {
     final String sourceText = null;
     final String xPath = "//top/@attribute";
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
     params.setBaseUrl(baseUrl);
     params.setConstraintQuery(constraintQuery);
     params.setSourceText(sourceText);
@@ -288,7 +288,7 @@ public class CategoryParamsTest {
     final String sourceText = Constants.SOURCE_TEXT_XPATH;
     final String xPath = null;
 
-    final CategoryParams params = new CategoryParams();
+    final TaxonomyParams params = new TaxonomyParams();
     params.setBaseUrl(baseUrl);
     params.setConstraintQuery(constraintQuery);
     params.setSourceText(sourceText);

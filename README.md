@@ -18,6 +18,8 @@ nothing but capital letters (e.g, GetInstanceFromFile, GET, POST).  Others are p
 - It gives the client the ability to specify the return format from the call to the service (either RDF or XML).
 If you return objects there is no need for the client to specify or even care what the output format is.
 
+### Be sure to see the [Changelog](https://github.com/likethecolor/Alchemy-API/blob/master/CHANGELOG.md)
+
 ### Note
 
 A recent change (maven 1.1.0) has removed from the `Client` the loading of the API key from an external resource.
@@ -81,17 +83,14 @@ which is slightly more verbose version of this:
 
 More examples:
 
-        final AbstractCall<CategoryAlchemyEntity> categoryCall = new CategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(categoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
-
         final AbstractCall<LanguageAlchemyEntity> languageCall = new LanguageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
         System.out.println(client.call(languageCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
         final AbstractCall<MicroformatAlchemyEntity> microformatCall = new MicroformatDataCall(new CallTypeUrl("http://microformats.org/wiki/hcard"));
         System.out.println(client.call(microformatCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
-        final AbstractCall<CategoryAlchemyEntity> rankedCategoryCall = new RankedCategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-        System.out.println(client.call(rankedCategoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
+        final AbstractCall<TaxonomyAlchemyEntity> rankedTaxonomyCall = new RankedTaxonomyCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(rankedTaxonomyCall).toString(ToStringStyle.MULTI_LINE_STYLE));
 
         final AbstractCall<ConceptAlchemyEntity> rankedConceptsCall = new RankedConceptsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
         System.out.println(client.call(rankedConceptsCall).toString(ToStringStyle.MULTI_LINE_STYLE));

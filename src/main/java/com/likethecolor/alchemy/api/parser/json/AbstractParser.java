@@ -65,6 +65,28 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
 
   /**
    * Check to make sure the JSONObject has the specified key and if so return
+   * the value as a boolean. If no key is found null is returned.
+   *
+   * @param key name of the field to fetch from the json object
+   * @param jsonObject object from which to fetch the value
+   *
+   * @return boolean value corresponding to the key or null if key not found
+   */
+  protected Boolean getBoolean(final String key, final JSONObject jsonObject) {
+    Boolean value = null;
+    if(hasKey(key, jsonObject)) {
+      try {
+        value = jsonObject.getBoolean(key);
+      }
+      catch(JSONException e) {
+        LOGGER.error("Could not get boolean from JSONObject for key: {}.", key, e);
+      }
+    }
+    return value;
+  }
+
+  /**
+   * Check to make sure the JSONObject has the specified key and if so return
    * the value as a double. If no key is found null is returned.
    *
    * @param key name of the field to fetch from the json object

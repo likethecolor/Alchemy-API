@@ -164,7 +164,7 @@ public class RelationsParserTest {
 
   @Test
   public void testParse_NoRelation() {
-    Response<RelationAlchemyEntity> response = new RelationsParser().parse(getJsonString_NoCategories());
+    Response<RelationAlchemyEntity> response = new RelationsParser().parse(getJsonString_NoRelations());
 
     assertEquals(0, response.size());
   }
@@ -273,9 +273,9 @@ public class RelationsParserTest {
   }
 
   /**
-   * JSON with 0 categories
+   * JSON with 0 relations
    */
-  private String getJsonString_NoCategories() {
+  private String getJsonString_NoRelations() {
     return "{\"" + JSONConstants.RESULTS_STATUS + "\":\"" + STATUS_STRING + "\"," +
            "\"" + JSONConstants.RESULTS_USAGE + "\": \"" + USAGE + "\"," +
            "\"" + JSONConstants.RESULTS_URL + "\": \"" + URL + "\"," +

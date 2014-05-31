@@ -1,5 +1,5 @@
 /**
- * File: CategoryAlchemyEntityTest.java
+ * File: LabelAlchemyEntityTest.java
  *
  * Copyright 2012 Dan Brown <dan@likethecolor.com>
  *
@@ -24,77 +24,96 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CategoryAlchemyEntityTest {
+public class TaxonomyAlchemyEntityTest {
   @Test
   public void testConstructor_NoArgs() {
     final Double expectedScore = Constants.DEFAULT_SCORE;
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity();
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity();
 
     assertEquals(expectedScore, entity.getScore());
   }
 
   @Test
   public void testConstructor() {
+    final boolean expectedIsConfident = true;
     final Double expectedScore = 0.1467D;
-    final String expectedCategory = "culture_politics";
+    final String expectedLabel = "culture_politics";
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity(expectedCategory, expectedScore);
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity(expectedLabel, expectedScore, expectedIsConfident);
 
     assertEquals(expectedScore, entity.getScore());
-    assertEquals(expectedCategory, entity.getCategory());
+    assertEquals(expectedLabel, entity.getLabel());
   }
 
   @Test
-  public void testCategory() {
-    final String expectedCategory = "culture_politics";
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity();
+  public void testLabel() {
+    final String expectedLabel = "culture_politics";
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity();
 
-    entity.setCategory(expectedCategory);
+    entity.setLabel(expectedLabel);
 
-    String actualCategory = entity.getCategory();
+    String actualLabel = entity.getLabel();
 
-    assertEquals(expectedCategory, actualCategory);
+    assertEquals(expectedLabel, actualLabel);
 
     // null - should change value
-    entity.setCategory(null);
+    entity.setLabel(null);
 
-    actualCategory = entity.getCategory();
+    actualLabel = entity.getLabel();
 
-    assertNull(actualCategory);
+    assertNull(actualLabel);
 
     // empty string - should change value
-    entity.setCategory(expectedCategory);
-    entity.setCategory("");
+    entity.setLabel(expectedLabel);
+    entity.setLabel("");
 
-    actualCategory = entity.getCategory();
+    actualLabel = entity.getLabel();
 
-    assertEquals("", actualCategory);
+    assertEquals("", actualLabel);
 
     // empty white space string - should change value and be trimmed
-    entity.setCategory(expectedCategory);
-    entity.setCategory("\t  \t\r\n");
+    entity.setLabel(expectedLabel);
+    entity.setLabel("\t  \t\r\n");
 
-    actualCategory = entity.getCategory();
+    actualLabel = entity.getLabel();
 
-    assertEquals("", actualCategory);
+    assertEquals("", actualLabel);
 
     // should trim
-    entity.setCategory("\n\r  " + expectedCategory + "   \t  ");
+    entity.setLabel("\n\r  " + expectedLabel + "   \t  ");
 
-    actualCategory = entity.getCategory();
+    actualLabel = entity.getLabel();
 
-    assertEquals(expectedCategory, actualCategory);
+    assertEquals(expectedLabel, actualLabel);
+  }
+
+  @Test
+  public void testIsConfident() {
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity();
+
+    entity.setIsConfident(true);
+
+    assertTrue(entity.isConfident());
+
+    entity.setIsConfident(false);
+
+    assertFalse(entity.isConfident());
+
+    entity.setIsConfident(true);
+
+    assertTrue(entity.isConfident());
   }
 
   @Test
   public void testClone() {
+    final boolean isConfident = true;
     final Double score = 0.1467D;
-    final String category = "culture_politics";
+    final String label = "culture_politics";
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity();
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity();
 
-    CategoryAlchemyEntity clone = entity.clone();
+    TaxonomyAlchemyEntity clone = entity.clone();
 
     assertTrue(entity.equals(clone));
     assertNotSame(entity, clone);
@@ -107,7 +126,14 @@ public class CategoryAlchemyEntityTest {
     assertNotSame(entity, clone);
 
 
-    entity.setCategory(category);
+    entity.setLabel(label);
+    clone = entity.clone();
+
+    assertTrue(entity.equals(clone));
+    assertNotSame(entity, clone);
+
+
+    entity.setIsConfident(isConfident);
     clone = entity.clone();
 
     assertTrue(entity.equals(clone));
@@ -116,10 +142,11 @@ public class CategoryAlchemyEntityTest {
 
   @Test
   public void testEquals() {
+    final boolean isConfident = true;
     final Double score = 0.1467D;
-    final String category = "culture_politics";
+    final String label = "culture_politics";
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity();
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity();
 
     assertFalse(entity.equals(null));
     assertFalse(entity.equals(new Double(1312D)));
@@ -129,28 +156,28 @@ public class CategoryAlchemyEntityTest {
     assertSame(entity, entity);
 
 
-    final CategoryAlchemyEntity other = new CategoryAlchemyEntity();
+    final TaxonomyAlchemyEntity other = new TaxonomyAlchemyEntity();
 
     assertTrue(entity.equals(other));
     assertEquals(entity, other);
     assertNotSame(entity, other);
 
 
-    // category
-    entity.setCategory(null);
-    other.setCategory(category + "foo");
+    // label
+    entity.setLabel(null);
+    other.setLabel(label + "foo");
 
     assertFalse(entity.equals(other));
     assertNotSame(entity, other);
 
 
-    entity.setCategory(category);
+    entity.setLabel(label);
 
     assertFalse(entity.equals(other));
     assertNotSame(entity, other);
 
 
-    other.setCategory(category);
+    other.setLabel(label);
 
     assertTrue(entity.equals(other));
     assertEquals(entity, other);
@@ -169,17 +196,32 @@ public class CategoryAlchemyEntityTest {
     assertTrue(entity.equals(other));
     assertEquals(entity, other);
     assertNotSame(entity, other);
+    
+    // is confident
+    entity.setIsConfident(isConfident);
+
+    assertFalse(entity.equals(other));
+    assertNotSame(entity, other);
+
+
+    other.setIsConfident(isConfident);
+
+    assertTrue(entity.equals(other));
+    assertEquals(entity, other);
+    assertNotSame(entity, other);
   }
 
   @Test
   public void testToString() {
+    final boolean isConfident = true;
     final Double score = 0.1467D;
-    final String category = "culture_politics";
+    final String label = "culture_politics";
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity(category, score);
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity(label, score, isConfident);
 
     final String expectedString = new ToStringBuilder(entity)
-        .append("category", category)
+        .append("is confident", isConfident)
+        .append("label", label)
         .append("score", score)
         .toString();
 
@@ -191,13 +233,15 @@ public class CategoryAlchemyEntityTest {
   @Test
   public void testToString_Formatted() {
     final ToStringStyle style = ToStringStyle.MULTI_LINE_STYLE;
+    final boolean isConfident = false;
     final Double score = 0.1467D;
-    final String category = "culture_politics";
+    final String label = "culture_politics";
 
-    final CategoryAlchemyEntity entity = new CategoryAlchemyEntity(category, score);
+    final TaxonomyAlchemyEntity entity = new TaxonomyAlchemyEntity(label, score, isConfident);
 
     final String expectedString = new ToStringBuilder(entity, style)
-        .append("category", category)
+        .append("is confident", isConfident)
+        .append("label", label)
         .append("score", score)
         .toString();
 

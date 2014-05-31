@@ -3,13 +3,12 @@ package com.likethecolor.alchemy;
 import com.likethecolor.alchemy.api.Client;
 import com.likethecolor.alchemy.api.call.AbstractCall;
 import com.likethecolor.alchemy.api.call.AuthorCall;
-import com.likethecolor.alchemy.api.call.CategoryCall;
 import com.likethecolor.alchemy.api.call.LanguageCall;
 import com.likethecolor.alchemy.api.call.MicroformatDataCall;
-import com.likethecolor.alchemy.api.call.RankedCategoryCall;
 import com.likethecolor.alchemy.api.call.RankedConceptsCall;
 import com.likethecolor.alchemy.api.call.RankedKeywordsCall;
 import com.likethecolor.alchemy.api.call.RankedNamedEntitiesCall;
+import com.likethecolor.alchemy.api.call.RankedTaxonomyCall;
 import com.likethecolor.alchemy.api.call.RawTextCall;
 import com.likethecolor.alchemy.api.call.RelationsCall;
 import com.likethecolor.alchemy.api.call.SentimentCall;
@@ -18,7 +17,6 @@ import com.likethecolor.alchemy.api.call.TextCall;
 import com.likethecolor.alchemy.api.call.TitleCall;
 import com.likethecolor.alchemy.api.call.type.CallTypeUrl;
 import com.likethecolor.alchemy.api.entity.AuthorAlchemyEntity;
-import com.likethecolor.alchemy.api.entity.CategoryAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.ConceptAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.HeaderAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.KeywordAlchemyEntity;
@@ -28,6 +26,7 @@ import com.likethecolor.alchemy.api.entity.NamedEntityAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.RelationAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.Response;
 import com.likethecolor.alchemy.api.entity.SentimentAlchemyEntity;
+import com.likethecolor.alchemy.api.entity.TaxonomyAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.TitleAlchemyEntity;
 import com.likethecolor.alchemy.api.params.NamedEntityParams;
 import com.likethecolor.alchemy.api.params.TargetedSentimentParams;
@@ -51,10 +50,6 @@ public class Main {
 //
 ////More examples:
 //
-    AbstractCall<CategoryAlchemyEntity> categoryCall = new CategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-    System.out.println(client.call(categoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
-    System.out.println();
-
     AbstractCall<LanguageAlchemyEntity> languageCall = new LanguageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
     System.out.println(client.call(languageCall).toString(ToStringStyle.MULTI_LINE_STYLE));
     System.out.println();
@@ -63,11 +58,11 @@ public class Main {
     System.out.println(client.call(microformatCall).toString(ToStringStyle.MULTI_LINE_STYLE));
     System.out.println();
 
-    AbstractCall<CategoryAlchemyEntity> rankedCategoryCall = new RankedCategoryCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
-    System.out.println(client.call(rankedCategoryCall).toString(ToStringStyle.MULTI_LINE_STYLE));
-    System.out.println();
+		AbstractCall<TaxonomyAlchemyEntity> rankedTaxonomyCall = new RankedTaxonomyCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+		System.out.println(client.call(rankedTaxonomyCall).toString(ToStringStyle.MULTI_LINE_STYLE));
+		System.out.println();
 
-    AbstractCall<ConceptAlchemyEntity> rankedConceptsCall = new RankedConceptsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+		AbstractCall<ConceptAlchemyEntity> rankedConceptsCall = new RankedConceptsCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
     System.out.println(client.call(rankedConceptsCall).toString(ToStringStyle.MULTI_LINE_STYLE));
     System.out.println();
 

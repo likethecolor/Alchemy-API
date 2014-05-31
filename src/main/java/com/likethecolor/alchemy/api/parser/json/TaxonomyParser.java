@@ -1,5 +1,5 @@
 /**
- * File: CategoryParser.java
+ * File: TaxonomyParser.java
  * Original Author: Dan Brown <dan@likethecolor.com>
  * Copyright 2012 Dan Brown <dan@likethecolor.com>
  *
@@ -17,32 +17,33 @@
  */
 package com.likethecolor.alchemy.api.parser.json;
 
-import com.likethecolor.alchemy.api.entity.CategoryAlchemyEntity;
+import com.likethecolor.alchemy.api.entity.TaxonomyAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.Response;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 
-public class CategoryParser extends AbstractParser<CategoryAlchemyEntity> {
-  protected void populateResponse(final Response<CategoryAlchemyEntity> response) {
+public class TaxonomyParser extends AbstractParser<TaxonomyAlchemyEntity> {
+  protected void populateResponse(final Response<TaxonomyAlchemyEntity> response) {
     final JSONObject jsonObject = getJSONObject();
-    final String category = getString(JSONConstants.CATEGORY_KEY, jsonObject);
-    final Double score = getDouble(JSONConstants.CATEGORY_SCORE_KEY, jsonObject);
+    final Boolean isConfident = getBoolean(JSONConstants.TAXONOMY_CONFIDENCE_KEY, jsonObject);
+    final String label = getString(JSONConstants.TAXONOMY_LABEL_KEY, jsonObject);
+    final Double score = getDouble(JSONConstants.TAXONOMY_SCORE_KEY, jsonObject);
 
-    if(isValidCategory(category, score)) {
-      response.addEntity(new CategoryAlchemyEntity(category, score));
+    if(isValidTaxonomy(label, score)) {
+      response.addEntity(new TaxonomyAlchemyEntity(label, score, isConfident));
     }
   }
 
   /**
    * Return true if at least one of the values is not null/empty.
    *
-   * @param category the category text
+   * @param label the label text
    * @param score the sentiment score
    *
    * @return true if at least one of the values is not null/empty
    */
-  private boolean isValidCategory(final String category, final Double score) {
-    return !StringUtils.isBlank(category)
+  private boolean isValidTaxonomy(final String label, final Double score) {
+    return !StringUtils.isBlank(label)
            || score != null;
   }
 }

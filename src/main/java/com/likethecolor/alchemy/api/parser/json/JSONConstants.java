@@ -67,8 +67,10 @@ public interface JSONConstants {
   static final String RELATIONS_ENTITY_TEXT_KEY = "text";
   static final String RELATIONS_ENTITY_TYPE_KEY = "type";
 
-  static final String CATEGORY_KEY = "category";
-  static final String CATEGORY_SCORE_KEY = "score";
+  static final String TAXONOMY_KEY = "taxonomy";
+  static final String TAXONOMY_CONFIDENCE_KEY = "confident";
+  static final String TAXONOMY_LABEL_KEY = "label";
+  static final String TAXONOMY_SCORE_KEY = "score";
 
   static final String LANGUAGE_LANGUAGE_KEY = "language";
   static final String LANGUAGE_ETHNOLOGUE_KEY = "ethnologue";
@@ -82,11 +84,6 @@ public interface JSONConstants {
   static final String MICROFORMATS_MICROFORMAT_KEY = "microformat";
   static final String MICROFORMATS_FIELD_KEY = "field";
   static final String MICROFORMATS_DATA_KEY = "data";
-
-
-  static final String RANKED_CATEGORIES = "categories";
-  static final String RANKED_CATEGORIES_TEXT_KEY = "text";
-  static final String RANKED_CATEGORIES_SCORE_KEY = "relevance";
 
   static final String RANKED_CONCEPTS = "concepts";
   static final String RANKED_CONCEPTS_TEXT_KEY = "text";

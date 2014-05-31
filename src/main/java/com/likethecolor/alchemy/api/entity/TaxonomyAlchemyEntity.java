@@ -24,31 +24,41 @@ import org.apache.commons.lang.builder.ToStringStyle;
  * AlchemyAPI provides easy-to-use facilities for categorizing your content.
  * Example usage: @see <a href="http://www.alchemyapi.com/api/categ/urls.html">http://www.alchemyapi.com/api/categ/urls.html</a>
  */
-public class CategoryAlchemyEntity extends AbstractAlchemyEntity {
-  private String category;
+public class TaxonomyAlchemyEntity extends AbstractAlchemyEntity {
+  private Boolean isConfident; // using big-B Boolean since there may be no value
+  private String label;
 
-  public CategoryAlchemyEntity() {
+  public TaxonomyAlchemyEntity() {
     super();
   }
 
-  public CategoryAlchemyEntity(final String category, final Double score) {
+  public TaxonomyAlchemyEntity(final String label, final Double score, final Boolean isConfident) {
     super(score);
-    setCategory(category);
+    setLabel(label);
+    setIsConfident(isConfident);
   }
 
-  public void setCategory(String category) {
-    if(category != null) {
-      category = category.trim();
+  public void setIsConfident(Boolean isConfident) {
+    this.isConfident = isConfident;
+  }
+
+  public Boolean isConfident() {
+    return isConfident;
+  }
+
+  public void setLabel(String label) {
+    if(label != null) {
+      label = label.trim();
     }
-    this.category = category;
+    this.label = label;
   }
 
-  public String getCategory() {
-    return category;
+  public String getLabel() {
+    return label;
   }
 
-  public CategoryAlchemyEntity clone() {
-    return new CategoryAlchemyEntity(getCategory(), getScore());
+  public TaxonomyAlchemyEntity clone() {
+    return new TaxonomyAlchemyEntity(getLabel(), getScore(), isConfident);
   }
 
   @Override
@@ -63,10 +73,13 @@ public class CategoryAlchemyEntity extends AbstractAlchemyEntity {
       return false;
     }
 
-    CategoryAlchemyEntity entity = (CategoryAlchemyEntity) o;
+    TaxonomyAlchemyEntity that = (TaxonomyAlchemyEntity) o;
 
-    if(category != null ? !category.equals(entity.category)
-                        : entity.category != null) {
+    if(isConfident != null ? !isConfident.equals(that.isConfident)
+                           : that.isConfident != null) {
+      return false;
+    }
+    if(label != null ? !label.equals(that.label) : that.label != null) {
       return false;
     }
 
@@ -76,7 +89,8 @@ public class CategoryAlchemyEntity extends AbstractAlchemyEntity {
   @Override
   public int hashCode() {
     int result = super.hashCode();
-    result = 31 * result + (category != null ? category.hashCode() : 0);
+    result = 31 * result + (isConfident != null ? isConfident.hashCode() : 0);
+    result = 31 * result + (label != null ? label.hashCode() : 0);
     return result;
   }
 
@@ -97,7 +111,8 @@ public class CategoryAlchemyEntity extends AbstractAlchemyEntity {
    */
   public String toString(final ToStringStyle style) {
     return new ToStringBuilder(this, style)
-        .append("category", getCategory())
+        .append("is confident", isConfident())
+        .append("label", getLabel())
         .append("score", getScore())
         .toString();
   }

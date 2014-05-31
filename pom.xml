@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
@@ -47,23 +49,21 @@
   <properties>
     <java.source.version>1.6</java.source.version>
     <java.target.version>1.6</java.target.version>
+
     <commons.lang.version>2.6</commons.lang.version>
     <json.version>20090211</json.version>
-
     <junit.version>4.8.1</junit.version>
-
     <log4j.version>1.2.16</log4j.version>
+    <slf4j.version>1.7.0</slf4j.version>
 
-    <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
-    <maven.dependency.plugin.version>2.4</maven.dependency.plugin.version>
-    <maven.jar.plugin.version>2.3.1</maven.jar.plugin.version>
-    <maven.javadoc.plugin.version>2.8</maven.javadoc.plugin.version>
-    <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
-    <maven.surefire.report.version>2.0</maven.surefire.report.version>
-    <maven.surefire.version>2.6</maven.surefire.version>
+    <maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
+    <maven.plugin.dependency.version>2.4</maven.plugin.dependency.version>
+    <maven.plugin.jacoco.version>0.7.1.201405082137</maven.plugin.jacoco.version>
+    <maven.plugin.jar.version>2.3.1</maven.plugin.jar.version>
+    <maven.plugin.javadoc.version>2.8</maven.plugin.javadoc.version>
+    <maven.plugin.source.version>2.1.2</maven.plugin.source.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <slf4j.version>1.7.0</slf4j.version>
   </properties>
 
   <dependencies>
@@ -110,9 +110,8 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
+        <version>${maven.plugin.compiler.version}</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -128,84 +127,8 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>${maven.source.plugin.version}</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>gen-src-pkg</id>
-            <phase>package</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-              <goal>test-jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <inherited>true</inherited>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven.javadoc.plugin.version}</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>${maven.jar.plugin.version}</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>com.likethecolor.alchemy.Main</mainClass>
-              <addClasspath>false</addClasspath>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven.surefire.version}</version>
-        <configuration>
-          <systemProperties>
-            <!-- There is a log4j.properties file in the tests resources directory.
-                 This way logging can be turned on for tests.
-              -->
-            <property>
-              <name>log4j.configuration</name>
-              <value>${project.build.testOutputDirectory}/log4j.properties
-              </value>
-            </property>
-          </systemProperties>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${maven.surefire.report.version}</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>${maven.dependency.plugin.version}</version>
+        <version>${maven.plugin.dependency.version}</version>
         <executions>
           <!-- unpack dependencies so they are included in the final JAR -->
           <execution>
@@ -235,6 +158,91 @@
               <outputDirectory>${project.build.outputDirectory}
               </outputDirectory>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${maven.plugin.jacoco.version}</version>
+        <executions>
+          <execution>
+            <id>default-prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-check</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includes>
+            <include>**/likethecolor/**</include>
+          </includes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven.plugin.jar.version}</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.likethecolor.alchemy.Main</mainClass>
+              <addClasspath>false</addClasspath>
+            </manifest>
+            <manifestEntries>
+              <Implementation-Version>${project.version}</Implementation-Version>
+              <Implementation-Build>${project.artifactId}</Implementation-Build>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven.plugin.javadoc.version}</version>
+        <inherited>true</inherited>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${maven.plugin.source.version}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>gen-src-pkg</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+              <goal>test-jar-no-fork</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>

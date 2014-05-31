@@ -1,5 +1,5 @@
 /**
- * File: RankedCategoryCall.java
+ * File: RankedTaxonomyCall.java
  * Original Author: Dan Brown <dan@likethecolor.com>
  * Copyright 2012 Dan Brown <dan@likethecolor.com>
  *
@@ -19,28 +19,28 @@ package com.likethecolor.alchemy.api.call;
 
 import com.likethecolor.alchemy.api.Constants;
 import com.likethecolor.alchemy.api.call.type.CallType;
-import com.likethecolor.alchemy.api.entity.CategoryAlchemyEntity;
+import com.likethecolor.alchemy.api.entity.TaxonomyAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.Response;
-import com.likethecolor.alchemy.api.params.CategoryParams;
+import com.likethecolor.alchemy.api.params.TaxonomyParams;
 import com.likethecolor.alchemy.api.params.Params;
-import com.likethecolor.alchemy.api.parser.json.CategoriesParser;
+import com.likethecolor.alchemy.api.parser.json.TaxonomiesParser;
 
-public class RankedCategoryCall extends AbstractCall<CategoryAlchemyEntity> {
-  public RankedCategoryCall(final CallType callType) {
-    this(callType, new CategoryParams());
+public class RankedTaxonomyCall extends AbstractCall<TaxonomyAlchemyEntity> {
+  public RankedTaxonomyCall(final CallType callType) {
+    this(callType, new TaxonomyParams());
   }
 
-  public RankedCategoryCall(final CallType callType, final Params params) {
+  public RankedTaxonomyCall(final CallType callType, final Params params) {
     super(callType, params);
   }
 
   @Override
   public String getName() {
-    return Constants.CALL_NAME_RANKED_CATEGORY;
+    return Constants.CALL_NAME_RANKED_TAXONOMY;
   }
 
   @Override
-  public Response<CategoryAlchemyEntity> parse(String jsonString) {
-    return new CategoriesParser().parse(jsonString);
+  public Response<TaxonomyAlchemyEntity> parse(String jsonString) {
+    return new TaxonomiesParser().parse(jsonString);
   }
 }
