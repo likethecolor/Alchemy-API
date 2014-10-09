@@ -43,7 +43,7 @@ This project uses [Apache Maven](https://maven.apache.org/) to build.  To build 
         <dependency>
             <groupId>com.likethecolor</groupId>
             <artifactId>alchemy</artifactId>
-            <version>1.1.2</version>
+            <version>1.1.3</version>
         </dependency>
 
 ## Dependencies
@@ -160,8 +160,11 @@ More examples:
 
 ## Thanks
 
-Thanks to [Amir Raminfar](findamir@gmail.com) [amir20](https://github.com/amir20)
-for providing a second set of eyes and helping me make this project better.
+Thank you to the following for providing a second set of eyes and helping me
+make this project better.
+
+- [Amir Raminfar](findamir@gmail.com) [amir20](https://github.com/amir20)
+- [bellorap](https://github.com/bellorap)
 
 ## Authors
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3 - Oct 09, 2014
+
+-  bug-10: Thanks to [bellorap](https://github.com/bellorap) for discovering this bug.
+  - Client#post(String,String,Params) now throws IOException instead of swallowing it.
+
 ## 1.1.2 - May 30, 2014
 
 -  Ranked Categories - not supported by AlchemyApi? ([#8](https://github.com/likethecolor/Alchemy-API/issues/8))
