@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.4 - Oct 15, 2014
+
+-  bug-11: Thanks to [Yair Liberzon] (yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com) for reporting this bug
+  - AlchemyAPI code expects standard JSON boolean value true/false, the AlchemyAPI service returns yes/no
+
 ## 1.1.3 - Oct 09, 2014
 
 -  bug-10: Thanks to [bellorap](https://github.com/bellorap) for discovering this bug.
