@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractParser.class);
+  private static final String TRUTHY_INITIAL_CHARACTER = "y";
   private JSONObject jsonObject;
 
   public Response<T> parse(final String jsonString) {
@@ -67,10 +68,14 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
    * Check to make sure the JSONObject has the specified key and if so return
    * the value as a boolean. If no key is found null is returned.
    *
+   * If the value is not JSON boolean (true/false) then {@link #getNonStandardBoolean(String, JSONObject)}
+   * is called.
+   *
    * @param key name of the field to fetch from the json object
    * @param jsonObject object from which to fetch the value
    *
    * @return boolean value corresponding to the key or null if key not found
+   * @see #getNonStandardBoolean(String, JSONObject) 
    */
   protected Boolean getBoolean(final String key, final JSONObject jsonObject) {
     Boolean value = null;
@@ -79,10 +84,50 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getBoolean(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get boolean from JSONObject for key: {}.", key, e);
+        LOGGER.warn("Could not get boolean from JSONObject for key: " + key, e);
+        LOGGER.warn("Trying to get the truthy value");
+        value = getNonStandardBoolean(key, jsonObject);
       }
     }
     return value;
+  }
+
+  /**
+   * This method differs from {@link #getBoolean(String, JSONObject)} in that
+   * the value is not be the standard JSON true/false but rather the string
+   * yes/no.
+   *
+   * @param key name of the field to fetch from the json object
+   * @param jsonObject object from which to fetch the value
+   *
+   * @return boolean value corresponding to the key or false
+   */
+  private Boolean getNonStandardBoolean(final String key, final JSONObject jsonObject) {
+    Boolean value = false;
+    try {
+      String stringValue = jsonObject.getString(key);
+      LOGGER.debug("got value: {} for key {}", stringValue, key);
+      if(isTruthy(stringValue)) {
+        LOGGER.debug("value is truthy");
+        value = true;
+      }
+    }
+    catch(JSONException e) {
+      LOGGER.error("Could not get truthy boolean from JSONObject for key: " + key, e);
+    }
+    return value;
+  }
+
+  /**
+   * Return true if the value starts with {@link #TRUTHY_INITIAL_CHARACTER}.
+   *
+   * @param value string value to test for truthiness
+   *
+   * @return true if value is truthy
+   */
+  private boolean isTruthy(String value) {
+    return value != null &&
+           value.trim().toLowerCase().startsWith(TRUTHY_INITIAL_CHARACTER);
   }
 
   /**
@@ -101,7 +146,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getDouble(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get Double from JSONObject for key: {}.", key, e);
+        LOGGER.error("Could not get Double from JSONObject for key: " + key, e);
       }
     }
     return value;
@@ -123,7 +168,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getInt(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get Integer from JSONObject for key: {}.", key, e);
+        LOGGER.error("Could not get Integer from JSONObject for key: " + key, e);
       }
     }
     return value;
@@ -145,7 +190,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getLong(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get Long from JSONObject for key: {}.", key, e);
+        LOGGER.error("Could not get Long from JSONObject for key: " + key, e);
       }
     }
     return value;
@@ -167,7 +212,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getString(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get String from JSONObject for key: {}.", key, e);
+        LOGGER.error("Could not get String from JSONObject for key: " + key, e);
       }
     }
     return value;
@@ -192,7 +237,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         }
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get String from JSONObject for index: {}.", index, e);
+        LOGGER.error("Could not get String from JSONObject for index: " + index, e);
       }
     }
     return value;
@@ -215,7 +260,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getJSONArray(key);
       }
       catch(JSONException e) {
-        LOGGER.error("Could not get JSONArray from JSONObject for key: {}.", key, e);
+        LOGGER.error("Could not get JSONArray from JSONObject for key: " + key, e);
       }
     }
     return value;
@@ -238,7 +283,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
       }
     }
     catch(JSONException e) {
-      LOGGER.error("Could not get JSONObject from JSONObject for key: {}.", key, e);
+      LOGGER.error("Could not get JSONObject from JSONObject for key: " + key, e);
     }
     return json;
   }
