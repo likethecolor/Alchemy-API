@@ -84,8 +84,8 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
         value = jsonObject.getBoolean(key);
       }
       catch(JSONException e) {
-        LOGGER.warn("Could not get boolean from JSONObject for key: " + key, e);
-        LOGGER.warn("Trying to get the truthy value");
+        LOGGER.debug("Could not get boolean from JSONObject for key: " + key, e);
+        LOGGER.debug("Trying to get the truthy value");
         value = getNonStandardBoolean(key, jsonObject);
       }
     }
@@ -113,7 +113,7 @@ public abstract class AbstractParser<T extends AbstractAlchemyEntity> {
       }
     }
     catch(JSONException e) {
-      LOGGER.error("Could not get truthy boolean from JSONObject for key: " + key, e);
+      LOGGER.error("Could not get boolean (not even truthy) from JSONObject for key: " + key, e);
     }
     return value;
   }

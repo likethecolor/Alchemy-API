@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.5 - Nov 15, 2014
+
+-  bug-11: [Yair Liberzon] (yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com) noted that the log messages still show up when the Alchemy service returns the non-standard JSON boolean.
+  - The only difference between 1.1.4 and this version is that the log levels for those messages changed from WARN to DEBUG.
+
 ## 1.1.4 - Oct 15, 2014
 
 -  bug-11: Thanks to [Yair Liberzon] (yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com) for reporting this bug
