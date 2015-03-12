@@ -56,8 +56,8 @@ public class CallTypeTextTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidText() {
-    final String text = "Jon";
+  public void testTextTooShort() {
+    final String text = "A";
     final CallType callType = new CallTypeText(text);
 
     final String actualType = callType.getType();

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.6 - Mar 12, 2015
+
+-  bug-13: reduced the min length on text that can be sent from 5 to 2
+
 ## 1.1.5 - Nov 15, 2014
 
 -  bug-11: [Yair Liberzon] (yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com) noted that the log messages still show up when the Alchemy service returns the non-standard JSON boolean.

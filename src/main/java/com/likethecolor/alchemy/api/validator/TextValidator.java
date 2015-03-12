@@ -18,7 +18,7 @@
 package com.likethecolor.alchemy.api.validator;
 
 public class TextValidator {
-  private static final int MIN_LENGTH = 5;
+  private static final int MIN_LENGTH = 2;
 
   public static void validate(final String text) {
     if(text == null) {

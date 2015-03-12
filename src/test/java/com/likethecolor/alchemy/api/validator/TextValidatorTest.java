@@ -37,7 +37,7 @@ public class TextValidatorTest {
 
   @Test
   public void testValidate_TextEqualsMinimumLength() {
-    TextValidator.validate("somethings");
+    TextValidator.validate("ok");
   }
 
   @Test
