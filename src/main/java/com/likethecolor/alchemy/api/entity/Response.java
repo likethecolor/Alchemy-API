@@ -169,6 +169,10 @@ public class Response<T extends AbstractAlchemyEntity> {
     return toString(ToStringStyle.DEFAULT_STYLE);
   }
 
+  public List<T> getEntities() {
+    return entities;
+  }
+
   /**
    * @return string representing this object
    *
