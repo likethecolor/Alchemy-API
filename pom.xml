@@ -224,19 +224,19 @@
         </configuration>
       </plugin>
 
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven.plugin.javadoc.version}</version>
-        <inherited>true</inherited>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+        <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+        <!--<version>${maven.plugin.javadoc.version}</version>-->
+        <!--<inherited>true</inherited>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>attach-javadocs</id>-->
+            <!--<goals>-->
+              <!--<goal>jar</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
 
       <plugin>
         <artifactId>maven-source-plugin</artifactId>
