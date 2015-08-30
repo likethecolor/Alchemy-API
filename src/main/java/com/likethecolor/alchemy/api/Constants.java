@@ -39,6 +39,7 @@ public interface Constants {
   static final String CALL_NAME_SENTIMENT = "GetTextSentiment";
   static final String CALL_NAME_TARGETED_SENTIMENT = "GetTargetedSentiment";
   static final String CALL_NAME_RELATIONS = "GetRelations";
+  static final String CALL_NAME_IMAGE_RANKED_KEYWORDS = "GetRankedImageKeywords";
 
   static final String DEFAULT_ENCODING = "UTF-8";
   static final Double DEFAULT_SCORE = 0.0D;
@@ -99,4 +100,5 @@ public interface Constants {
   static final String PARAM_USE_META_DATA = "useMetaData";
   static final String PARAM_URL = "url";
   static final String PARAM_XPATH = "xpath";
+
 }
