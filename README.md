@@ -168,6 +168,7 @@ More examples:
 Thank you to the following for providing a second set of eyes and helping me
 make this project better.
 
+- [Ainur Minibaev](rapper01@list.ru) [ainurminibaev] (https://github.com/ainurminibaev)
 - [Amir Raminfar](findamir@gmail.com) [amir20](https://github.com/amir20)
 - [bellorap](https://github.com/bellorap)
 - [Yair Liberzon](yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com)
