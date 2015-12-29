@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 - Dec 28, 2015
+
+- added Ranked Image Keywords call provided by [ainurminibaev](https://github.com/ainurminibaev)
+
 ## 1.1.6 - Mar 12, 2015
 
 -  bug-13: reduced the min length on text that can be sent from 5 to 2

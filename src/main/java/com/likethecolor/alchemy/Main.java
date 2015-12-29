@@ -1,8 +1,25 @@
+/**
+ * Original Author: Dan Brown <dan@likethecolor.com>
+ * Copyright 2015 Dan Brown <dan@likethecolor.com>
+ * <p/>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.likethecolor.alchemy;
 
 import com.likethecolor.alchemy.api.Client;
 import com.likethecolor.alchemy.api.call.AbstractCall;
 import com.likethecolor.alchemy.api.call.AuthorCall;
+import com.likethecolor.alchemy.api.call.ImageCall;
 import com.likethecolor.alchemy.api.call.LanguageCall;
 import com.likethecolor.alchemy.api.call.MicroformatDataCall;
 import com.likethecolor.alchemy.api.call.RankedConceptsCall;
@@ -19,6 +36,7 @@ import com.likethecolor.alchemy.api.call.type.CallTypeUrl;
 import com.likethecolor.alchemy.api.entity.AuthorAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.ConceptAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.HeaderAlchemyEntity;
+import com.likethecolor.alchemy.api.entity.ImageEntity;
 import com.likethecolor.alchemy.api.entity.KeywordAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.LanguageAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.MicroformatAlchemyEntity;
@@ -130,5 +148,9 @@ public class Main {
     AbstractCall<NamedEntityAlchemyEntity> rankedNamedEntitiesCall = new RankedNamedEntitiesCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"), namedEntityParams);
     Response<NamedEntityAlchemyEntity> rankedNamedEntitiesResponse = client.call(rankedNamedEntitiesCall);
     System.out.println(rankedNamedEntitiesResponse.toString(ToStringStyle.MULTI_LINE_STYLE));
+
+    AbstractCall<ImageEntity> imageCall = new ImageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+    System.out.println(client.call(imageCall).toString(ToStringStyle.MULTI_LINE_STYLE));
+    System.out.println();
   }
 }
