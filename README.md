@@ -112,6 +112,11 @@ More examples:
 
         final AbstractCall<TitleAlchemyEntity> titleCall = new TitleCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
         System.out.println(client.call(titleCall).toString(ToStringStyle.MULTI_LINE_STYLE));
+        
+        # v 1.2.0
+        final AbstractCall<ImageEntity> imageCall = new ImageCall(new CallTypeUrl("http://www.cnn.com/2009/CRIME/01/13/missing.pilot/index.html"));
+        System.out.println(client.call(imageCall).toString(ToStringStyle.MULTI_LINE_STYLE));
+
 
 ### Setting Optional Values
 

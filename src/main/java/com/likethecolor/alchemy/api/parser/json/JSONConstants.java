@@ -122,4 +122,8 @@ public interface JSONConstants {
   static final String TARGETED_SENTIMENT_TYPE_KEY = SENTIMENT_TYPE_KEY;
 
   static final String TITLE_KEY = "title";
+
+  static final String IMAGE_KEYWORDS_KEY = "imageKeywords";
+  static final String IMAGE_KEYWORD_SCORE_KEY = "score";
+  static final String IMAGE_KEYWORD_TEXT_KEY = "text";
 }
