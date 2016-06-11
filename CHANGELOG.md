@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1 - Jun 11, 2016
+
+- Thanks to [Gursev Singh Kaira] (https://github.com/gursev) asking that the call to AlchemyAPI service use https
+
 ## 1.2.0 - Dec 28, 2015
 
 - added Ranked Image Keywords call provided by [ainurminibaev](https://github.com/ainurminibaev)

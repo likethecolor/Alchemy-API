@@ -27,7 +27,7 @@ public class Client {
   private static final Logger LOGGER = LoggerFactory.getLogger(Client.class);
   private static final String API_KEY = "apikey";
   private static final String HEADER_CONTENT_LENGTH = "Content-Length";
-  private static final String DEFAULT_URL = "http://access.alchemyapi.com/calls/";
+  private static final String DEFAULT_URL = "https://access.alchemyapi.com/calls/";
 
   private String apiKey;
   private String requestUri = DEFAULT_URL;
