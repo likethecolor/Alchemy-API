@@ -43,7 +43,7 @@ This project uses [Apache Maven](https://maven.apache.org/) to build.  To build 
         <dependency>
             <groupId>com.likethecolor</groupId>
             <artifactId>alchemy</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </dependency>
 
 ## Dependencies
@@ -172,6 +172,8 @@ make this project better.
 - [Amir Raminfar](findamir@gmail.com) [amir20](https://github.com/amir20)
 - [bellorap](https://github.com/bellorap)
 - [Yair Liberzon](yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com)
+- [Gursev Singh Kaira] (https://github.com/gursev)
+
 
 ## Authors
 
