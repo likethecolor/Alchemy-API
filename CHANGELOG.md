@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0 - Jun 20, 2016
+
+- [support] (support@alchemyapi.com) provided a new url for the invalid-permissions-for-call error
+
 ## 1.2.1 - Jun 11, 2016
 
 - Thanks to [Gursev Singh Kaira] (https://github.com/gursev) asking that the call to AlchemyAPI service use https

@@ -43,7 +43,7 @@ This project uses [Apache Maven](https://maven.apache.org/) to build.  To build 
         <dependency>
             <groupId>com.likethecolor</groupId>
             <artifactId>alchemy</artifactId>
-            <version>1.2.1</version>
+            <version>1.3.0</version>
         </dependency>
 
 ## Dependencies

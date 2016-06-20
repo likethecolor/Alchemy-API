@@ -20,14 +20,13 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Client {
   private static final Logger LOGGER = LoggerFactory.getLogger(Client.class);
   private static final String API_KEY = "apikey";
   private static final String HEADER_CONTENT_LENGTH = "Content-Length";
-  private static final String DEFAULT_URL = "https://access.alchemyapi.com/calls/";
+  private static final String DEFAULT_URL = " https://gateway-a.watsonplatform.net/calls/";
 
   private String apiKey;
   private String requestUri = DEFAULT_URL;
