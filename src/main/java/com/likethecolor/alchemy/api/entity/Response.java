@@ -163,10 +163,15 @@ public class Response<T extends AbstractAlchemyEntity> {
    * @return string representing this object
    *
    * @see #toString(org.apache.commons.lang.builder.ToStringStyle)
+   *
    */
   @Override
   public String toString() {
     return toString(ToStringStyle.DEFAULT_STYLE);
+  }
+
+  public List<T> getEntities() {
+    return entities;
   }
 
   /**
