@@ -70,6 +70,26 @@ public class ParamsTest {
 
     assertEquals(expectedHtml, actualHtml);
   }
+  @Test
+  public void testLanguage() {
+    final Language expectedLanguage = Language.ENGLISH;
+
+    final Params params = new Params();
+
+    params.setLanguage(expectedLanguage);
+
+    Language actualLanguage = params.getLanguage();
+
+    assertEquals(expectedLanguage, actualLanguage);
+
+
+    // null - should change value
+    params.setLanguage(null);
+
+    actualLanguage = params.getLanguage();
+
+    assertNull(actualLanguage);
+  }
 
   @Test
   public void testOutputMode() {
@@ -176,6 +196,7 @@ public class ParamsTest {
     params.setHtml(html);
 
     String expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
+                            + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                             + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -186,6 +207,7 @@ public class ParamsTest {
     params.setText(text);
 
     expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -196,6 +218,7 @@ public class ParamsTest {
     params.setURL(url);
 
     expectedString = "&" + Constants.PARAM_URL + "=" + encode(url)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -208,6 +231,7 @@ public class ParamsTest {
 
     expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
                      + "&" + Constants.PARAM_TEXT + "=" + encode(text)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -220,6 +244,7 @@ public class ParamsTest {
 
     expectedString = "&" + Constants.PARAM_TEXT + "=" + encode(text)
                      + "&" + Constants.PARAM_URL + "=" + encode(url)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -232,6 +257,7 @@ public class ParamsTest {
 
     expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
                      + "&" + Constants.PARAM_URL + "=" + encode(url)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());
@@ -246,6 +272,7 @@ public class ParamsTest {
     expectedString = "&" + Constants.PARAM_HTML + "=" + encode(html)
                      + "&" + Constants.PARAM_TEXT + "=" + encode(text)
                      + "&" + Constants.PARAM_URL + "=" + encode(url)
+                     + "&" + Constants.PARAM_LANGUAGE + "=" + Language.DETECT.toString().toLowerCase()
                      + "&" + Constants.PARAM_OUTPUT_FORMAT + "=" + Constants.DEFAULT_OUTPUT_FORMAT;
 
     assertEquals(expectedString, params.toString());

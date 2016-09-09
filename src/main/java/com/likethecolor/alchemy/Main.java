@@ -46,6 +46,7 @@ import com.likethecolor.alchemy.api.entity.Response;
 import com.likethecolor.alchemy.api.entity.SentimentAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.TaxonomyAlchemyEntity;
 import com.likethecolor.alchemy.api.entity.TitleAlchemyEntity;
+import com.likethecolor.alchemy.api.params.Language;
 import com.likethecolor.alchemy.api.params.NamedEntityParams;
 import com.likethecolor.alchemy.api.params.TargetedSentimentParams;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -144,6 +145,7 @@ public class Main {
     namedEntityParams.setIsQuotations(true);
     namedEntityParams.setIsSentiment(true);
     namedEntityParams.setIsShowSourceText(true);
+    namedEntityParams.setLanguage(Language.ENGLISH);
 
     AbstractCall<NamedEntityAlchemyEntity> rankedNamedEntitiesCall = new RankedNamedEntitiesCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"), namedEntityParams);
     Response<NamedEntityAlchemyEntity> rankedNamedEntitiesResponse = client.call(rankedNamedEntitiesCall);

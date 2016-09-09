@@ -85,6 +85,7 @@ public interface Constants {
   String PARAM_EXTRACT_LINKS = "extractLinks";
   String PARAM_HTML = "html";
   String PARAM_KEYWORD_EXTRACT_MODE = "keywordExtractMode";
+  String PARAM_LANGUAGE = "language";
   String PARAM_LINKED_DATA = "linkedData";
   String PARAM_MAX_RETRIEVE = "maxRetrieve";
   String PARAM_OUTPUT_FORMAT = "outputMode";

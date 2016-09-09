@@ -25,6 +25,7 @@ import java.net.URLEncoder;
 
 public class Params {
   private String html;
+  private Language language = Language.DETECT;
   private String text;
   private String url;
 
@@ -37,6 +38,14 @@ public class Params {
       html = html.trim();
     }
     this.html = html;
+  }
+
+  public Language getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(Language language) {
+    this.language = language;
   }
 
   public String getOutputMode() {
@@ -71,6 +80,7 @@ public class Params {
         .append(createParam(Constants.PARAM_HTML, encode(html)))
         .append(createParam(Constants.PARAM_TEXT, encode(text)))
         .append(createParam(Constants.PARAM_URL, encode(url)))
+        .append(createParam(Constants.PARAM_LANGUAGE, encode(language.toString().toLowerCase())))
         .append(createParam(Constants.PARAM_OUTPUT_FORMAT, Constants.DEFAULT_OUTPUT_FORMAT))
         .toString();
   }

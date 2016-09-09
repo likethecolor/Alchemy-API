@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 - Sep 09, 2016
+
+- bug-22: can now specify language in the params [LucaMarzialetti](https://github.com/LucaMarzialetti)
+
 ## 1.3.0 - Jun 20, 2016
 
 - [support] (support@alchemyapi.com) provided a new url for the invalid-permissions-for-call error

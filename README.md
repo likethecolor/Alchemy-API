@@ -43,7 +43,7 @@ This project uses [Apache Maven](https://maven.apache.org/) to build.  To build 
         <dependency>
             <groupId>com.likethecolor</groupId>
             <artifactId>alchemy</artifactId>
-            <version>1.3.0</version>
+            <version>1.3.1</version>
         </dependency>
 
 ## Dependencies
@@ -133,6 +133,7 @@ More examples:
         namedEntityParams.setIsQuotations(true);
         namedEntityParams.setIsSentiment(true);
         namedEntityParams.setIsShowSourceText(true);
+        namedEntityParams.setLanguage(Language.ENGLISH);
 
         final AbstractCall<NamedEntityAlchemyEntity> rankedNamedEntitiesCall = new RankedNamedEntitiesCall(new CallTypeUrl("http://www.politico.com/blogs/media/2012/02/detroit-news-ed-upset-over-romney-edit-115247.html"), namedEntityParams);
         final Response<NamedEntityAlchemyEntity> rankedNamedEntitiesResponse = client.call(rankedNamedEntitiesCall);
@@ -173,6 +174,7 @@ make this project better.
 - [bellorap](https://github.com/bellorap)
 - [Yair Liberzon](yair.liberzon@zoomd.com) and [Sivan Ravid](sivan.ravid@zoomd.com)
 - [Gursev Singh Kaira] (https://github.com/gursev)
+- [LucaMarzialetti] (https://github.com/LucaMarzialetti)
 
 
 ## Authors
