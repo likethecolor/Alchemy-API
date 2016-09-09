@@ -295,6 +295,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -334,6 +335,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
         .append("&").append(Constants.PARAM_KEYWORD_EXTRACT_MODE).append("=").append(encode(keywordExtractMode))
@@ -354,7 +356,6 @@ public class KeywordParamsTest {
   @Test
   public void testToString_NullConstraintQuery() {
     final String baseUrl = "http://url.com/";
-    final String constraintQuery = null;
     final String keywordExtractMode = Constants.KEYWORD_EXTRACT_MODE_STRICT;
     final int maxRetrieve = 50;
     final boolean isShowSentiment = true;
@@ -372,6 +373,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_KEYWORD_EXTRACT_MODE).append("=").append(encode(keywordExtractMode))
@@ -410,6 +412,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -449,6 +452,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -489,6 +493,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -529,6 +534,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -568,6 +574,7 @@ public class KeywordParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))

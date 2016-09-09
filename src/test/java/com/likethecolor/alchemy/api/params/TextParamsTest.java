@@ -67,6 +67,7 @@ public class TextParamsTest {
     params.setUseMetaData(useMetaData);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_EXTRACT_LINKS).append("=").append(extractLinks ? 1 : 0)
         .append("&").append(Constants.PARAM_USE_META_DATA).append("=").append(useMetaData ? 1 : 0)
@@ -87,6 +88,7 @@ public class TextParamsTest {
     params.setUseMetaData(useMetaData);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_EXTRACT_LINKS).append("=").append(extractLinks ? 1 : 0)
         .append("&").append(Constants.PARAM_USE_META_DATA).append("=").append(useMetaData ? 1 : 0)

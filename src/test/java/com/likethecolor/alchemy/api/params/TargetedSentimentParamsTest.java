@@ -87,6 +87,7 @@ public class TargetedSentimentParamsTest {
     params.setTarget(target);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_SHOW_SOURCE_TEXT).append("=").append(
             isShowSourceText ? 1 : 0)
@@ -108,6 +109,7 @@ public class TargetedSentimentParamsTest {
     params.setTarget(target);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_SHOW_SOURCE_TEXT).append("=").append(
             isShowSourceText ? 1 : 0)
@@ -129,6 +131,7 @@ public class TargetedSentimentParamsTest {
     params.setTarget(target);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_SHOW_SOURCE_TEXT).append("=").append(
             isShowSourceText ? 1 : 0)

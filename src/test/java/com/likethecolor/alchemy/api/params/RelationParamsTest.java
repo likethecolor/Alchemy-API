@@ -371,6 +371,7 @@ public class RelationParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -432,6 +433,7 @@ public class RelationParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
         .append("&").append(Constants.PARAM_COREFERENCE).append("=").append(
@@ -492,6 +494,7 @@ public class RelationParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_COREFERENCE).append("=").append(
@@ -552,6 +555,7 @@ public class RelationParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
@@ -612,6 +616,7 @@ public class RelationParamsTest {
     params.setXPath(xPath);
 
     final String expectedString = new StringBuilder()
+        .append("&").append(Constants.PARAM_LANGUAGE).append("=").append(Language.DETECT.toString().toLowerCase())
         .append("&").append(Constants.PARAM_OUTPUT_FORMAT).append("=").append(Constants.DEFAULT_OUTPUT_FORMAT)
         .append("&").append(Constants.PARAM_BASE_URL).append("=").append(encode(baseUrl))
         .append("&").append(Constants.PARAM_CONSTRAINT_QUERY).append("=").append(encode(constraintQuery))
