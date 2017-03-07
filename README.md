@@ -1,5 +1,7 @@
 # Java Alchemy API
 
+[![API Testing](https://img.shields.io/badge/API%20Test-RapidAPI-blue.svg)](https://rapidapi.com/package/AlchemyText/functions?utm_source=AlchemyGithub&utm_medium=button&utm_content=Vender_GitHub)
+
 ## About
 
 Java Alchemy API is an interface to the [Alchemy API](http://www.alchemyapi.com/api/)
